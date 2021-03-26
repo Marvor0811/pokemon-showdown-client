@@ -594,7 +594,25 @@ const Dex = new class implements ModdedDex {
 		// April Fool's 2014
 		if (window.Config && Config.server && Config.server.afd || options.afd) {
 			dir = 'afd' + dir;
-			spriteData.url += dir + '/' + name + '.png';
+      //spriteData.url = species.spriteid + ".png"
+      // if(spriteData.url='https://play.pokemonshowdown.com/sprites/dex/bulbasuree.png'){
+      //   spriteData.url += dir + '/' + 'weavile' + '.png';
+      // }
+      // else{
+      //   spriteData.url += dir + '/' + name + '.png';
+      // }
+      // if(name=="bulbasuree"){
+      //   spriteData.url +='https://wiki.p-insurgence.com/images/8/82/727f.png';
+      // }
+      // else{
+      //   spriteData.url += dir + '/' + name + '.png';
+      // }
+      if(name=="bulbasuree"){
+        spriteData.url += 'https://play.pokemonshowdown.com/sprites/dex/alakazam.png';
+      }
+      else{
+        spriteData.url += 'https://play.pokemonshowdown.com/sprites/dex/venusaur.png';
+      }
 			// Duplicate code but needed to make AFD tinymax work
 			// April Fool's 2020
 			if (isDynamax && !options.noScale) {
@@ -624,6 +642,7 @@ const Dex = new class implements ModdedDex {
 
 			spriteData.w = animationData[facing].w;
 			spriteData.h = animationData[facing].h;
+      //spriteData.url = species.spriteid + ".png"
 			spriteData.url += dir + '/' + name + '.gif';
 		} else {
 			// There is no entry or enough data in pokedex-mini.js
@@ -635,8 +654,26 @@ const Dex = new class implements ModdedDex {
 			if (spriteData.gen >= 4 && miscData['frontf'] && options.gender === 'F') {
 				name += '-f';
 			}
+      //spriteData.url = species.spriteid + ".png"
+      // if(spriteData.url='https://play.pokemonshowdown.com/sprites/dex/bulbasuree.png'){
+      //   spriteData.url += dir + '/' + 'weavile' + '.png';
+      // }
+      // else{
+      //   spriteData.url += dir + '/' + name + '.png';
+      // }
+      // if(name=="bulbasuree"){
+      //   spriteData.url +='https://wiki.p-insurgence.com/images/8/82/727f.png';
+      // }
+      // else{
+      //   spriteData.url += dir + '/' + name + '.png';
+      // }
+      if(name=="bulbasuree"){
+        spriteData.url += 'https://play.pokemonshowdown.com/sprites/dex/alakazam.png';
+      }
+      else{
+        spriteData.url += 'https://play.pokemonshowdown.com/sprites/dex/venusaur.png';
+      }
 
-			spriteData.url += dir + '/' + name + '.png';
 		}
 
 		if (!options.noScale) {
@@ -774,6 +811,9 @@ const Dex = new class implements ModdedDex {
 		if (!pokemon) return '';
 		const data = this.getTeambuilderSpriteData(pokemon, gen);
 		const shiny = (data.shiny ? '-shiny' : '');
+    if(pokemon.name=="Bulbasuree"){
+      return 'background-image:url(' + Dex.resourcePrefix + data.spriteDir + shiny + '/' + 'bulbasaur' + '.png);background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat';
+    }
 		return 'background-image:url(' + Dex.resourcePrefix + data.spriteDir + shiny + '/' + data.spriteid + '.png);background-position:' + data.x + 'px ' + data.y + 'px;background-repeat:no-repeat';
 	}
 
